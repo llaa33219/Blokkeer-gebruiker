@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "엔트리-유저차단",
   "description": "엔트리 유저차단",
-  "version": "1.0",
+  "version": "1.1",
   "permissions": ["storage"],
   "host_permissions": ["https://playentry.org/*"],
   "action": {
