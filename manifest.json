@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "엔트리-유저차단",
+  "description": "엔트리 유저차단",
+  "version": "1.0",
+  "permissions": ["storage"],
+  "host_permissions": ["https://playentry.org/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "엔트리-유저차단"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+    "matches": ["https://playentry.org/*"],
+    "js": ["content.js"],
+    "run_at": "document_idle"
+    }
+  ]
+}

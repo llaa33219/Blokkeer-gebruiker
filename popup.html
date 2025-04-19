@@ -1,0 +1,138 @@
+<!-- popup.html -->
+
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>Playentry User Blocker</title>
+  <style>
+    :root{
+      --accent:#2d8cff;
+      --bg:#ffffff;
+      --border:#d0d7de;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --accent:#4d94ff;
+        --bg:#1e1e1e;
+        --border:#3c3c3c;
+      }
+    }
+
+    /* ───────────── 기본 레이아웃 ───────────── */
+    body{
+      width:300px; margin:0; padding:16px;
+      background:var(--bg);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+      color:#0f1117;
+    }
+    h1{
+      font-size:1.1rem; margin:0 0 12px;
+    }
+
+    /* ───────────── 스위치 그룹 ───────────── */
+    .toggle-group{ margin-bottom:12px; }
+
+    /* ───────────── 입력 그룹 ───────────── */
+    .input-group{ display:flex; gap:6px; }
+    input{
+      flex:1;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:6px;
+      font-size:.9rem;
+      background:inherit;
+      color:inherit;
+    }
+    button{
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 20px;
+        width: 100px;
+        height: 41px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    button:hover{
+        background-color: #005BDD;
+        transform: translateY(2px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ───────────── 목록 영역 ───────────── */
+    ul{
+      list-style:none; margin:16px 0 0; padding:0;
+      max-height:240px; overflow-y:auto;
+    }
+    li{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:8px; padding:6px 0;
+      border-bottom:1px solid #f0f1f3;
+      font-size:.8rem; word-break:break-all;
+    }
+    li:last-child{ border-bottom:none; }
+    li span{
+      flex:1;
+      font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    }
+
+    /* ───────────── 해제 버튼 ───────────── */
+    li button{
+        background: #ff4d4f;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 20px;
+        width: 80px;
+        height: 35px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    li button:hover{
+        background:#c90003;
+        transform: translateY(2px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ───────────── 스크롤바 ───────────── */
+    ::-webkit-scrollbar{ width:6px; }
+    ::-webkit-scrollbar-thumb{
+      background:#c1c1c1; border-radius:3px;
+    }
+    ::-webkit-scrollbar-thumb:hover{ background:#a8a8a8; }
+  </style>
+</head>
+<body>
+  <h1>차단할 프로필 추가</h1>
+
+  <div class="toggle-group">
+    <label>
+      <input id="projectToggle" type="checkbox" />
+      프로젝트 카드도 차단
+    </label>
+  </div>
+  <div class="toggle-group">
+    <label>
+      <input id="qnaToggle" type="checkbox" />
+      Q&A 섹션도 차단
+    </label>
+  </div>
+
+  <div class="input-group">
+    <input id="urlInput" type="text" placeholder="https://playentry.org/profile/..." />
+    <button id="addBtn">추가</button>
+  </div>
+
+  <ul id="list"></ul>
+
+  <script src="popup.js"></script>
+</body>
+</html>
